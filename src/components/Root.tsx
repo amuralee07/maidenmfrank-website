@@ -14,11 +14,11 @@ export function Root() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             {/* Brand */}
             <div className="md:col-span-2">
-              <div className="mb-4">
+              <div className="mb-6 w-full max-w-[520px] h-32 md:h-40 overflow-hidden flex items-center">
                 <img
                   src="/maidenmfrank-footer-logo.png"
                   alt="maidenmfrank"
-                  className="h-10 w-auto"
+                  className="h-48 md:h-56 w-auto"
                 />
               </div>
               <p className="text-white/60 max-w-md">

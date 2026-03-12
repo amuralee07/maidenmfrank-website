@@ -5,7 +5,6 @@ import { BookOpen, Star, Award, Globe, Users, ExternalLink, FileText, Sparkles, 
 import { Link } from 'react-router';
 import bookCover from 'figma:asset/e6b9490ca762ff0fc27b68a70f0166a32d5dfa0e.png';
 import portraitImage from 'figma:asset/23fc90c98c532984255573344134df44fc62b5af.png';
-import podcastGuestingsImg from 'figma:asset/1d6d91657f6c52b5e753e49215fb746cb15759d7.png';
 
 
 const RESOURCES_URL = 'https://www.maidenmfrank.com/resources.html';
@@ -604,8 +603,15 @@ export function Books() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto mb-14"
-          >            
+            className="max-w-5xl mx-auto mb-14"
+          >
+            <motion.img
+              src="/books-podcast-guestings.png"
+              alt="Podcast guestings featuring Maiden Manzanal-Frank"
+              className="w-full rounded-3xl shadow-2xl border border-stone-200"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            />
           </motion.div>
 
           <motion.div
