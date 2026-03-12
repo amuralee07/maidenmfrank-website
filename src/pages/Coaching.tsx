@@ -6,7 +6,6 @@ import { useRef } from 'react';
 import { Link } from 'react-router';
 import challengeImage from 'figma:asset/a1b3eedfcf78d0129d1f2a0b502f7ae9655a5d5a.png';
 import offeringsBg from 'figma:asset/c9917fe1e302fc960a32612e7d8181549673525d.png';
-import executiveCoachingBg from 'figma:asset/12b1b1710f4022e76b3a2eb877b0241eafbd1764.png';
 import provocateursNexusBg from 'figma:asset/0e04bfd2134a7243f6a2cef96460d5fc5c19a25d.png';
 
 export function Coaching() {
@@ -44,7 +43,7 @@ export function Coaching() {
       features: ["One-to-one or small group formats", "Focus on strategy, change, and legacy", "Build clarity, resilience, and courageous action", "Includes cohorts and retreats"],
       buttonText: "Learn More",
       buttonLink: null,
-      image: executiveCoachingBg,
+      image: "/coaching-executive-coaching.png",
       icon: Globe,
       emoji: "💼"
     },

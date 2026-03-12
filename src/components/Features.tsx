@@ -100,8 +100,8 @@ export function Features() {
         </div>
       </section>
 
-      {/* Speaking Video Section - PURE EARTHTY BROWN BACKGROUND */}
-      <section id="speaking" className="relative bg-amber-900 py-32 lg:py-40 overflow-hidden">
+      {/* Speaking Video Section - creamy brown background */}
+      <section id="speaking" className="relative bg-[#DCB69A] py-32 lg:py-40 overflow-hidden">
         {/* Subtle texture overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{ 
@@ -117,11 +117,11 @@ export function Features() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-5xl lg:text-6xl font-bold text-[#18181b] mb-6 leading-tight">
               Speaking in Action
             </h2>
-            <div className="h-1 w-24 bg-amber-400 rounded-full mx-auto mb-6" />
-            <p className="text-xl text-amber-100 max-w-3xl mx-auto leading-relaxed">
+            <div className="h-1 w-24 bg-[#b3743b] rounded-full mx-auto mb-6" />
+            <p className="text-xl text-[#3f2a1c] max-w-3xl mx-auto leading-relaxed">
               Watch highlights from recent keynote presentations and discover how transformative leadership principles come to life on stage
             </p>
           </motion.div>
@@ -135,9 +135,9 @@ export function Features() {
             className="relative max-w-5xl mx-auto"
           >
             {/* Abstract decorative frame */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-amber-600 to-amber-400 rounded-3xl blur-xl opacity-30" />
+            <div className="absolute -inset-4 bg-gradient-to-br from-[#c58c5b] to-[#f2d0a7] rounded-3xl blur-xl opacity-40" />
             
-            <div className="relative bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-400">
+            <div className="relative bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-[#e0b384]">
               <div className="relative pt-[56.25%] overflow-hidden">
                 <iframe
                   className="absolute border-0"

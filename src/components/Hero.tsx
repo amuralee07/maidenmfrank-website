@@ -198,7 +198,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="absolute top-[400px] right-0 max-w-xl text-lg lg:text-xl text-sky-50/95 leading-relaxed italic border-l-4 border-sky-300 pl-6 bg-[#e8d5b7]/10 backdrop-blur-sm p-6 rounded-2xl"
             >
-              Challenging changemakers to lead with purpose, innovation, and excellence. Author of <em>Provocateurs Not Philanthropists</em>, turning good intentions into global impact.
+              Challenging changemakers to lead with purpose, innovation, and excellence. Author of <em>Provocateurs Not Philanthropists</em>.
             </motion.p>
 
             {/* CTAs - positioned at bottom left, staggered */}
