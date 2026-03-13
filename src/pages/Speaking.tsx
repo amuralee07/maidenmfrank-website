@@ -847,24 +847,15 @@ export function Speaking() {
                   High-resolution images for event promotion, websites, and marketing materials.
                 </p>
 
-                <div className="relative space-y-2">
-                  {[
-                    { src: '/meeting-pro-maiden-1.png', label: 'Photo 1 (Filipiniana)' },
-                    { src: '/meeting-pro-maiden-2.png', label: 'Photo 2 (Professional portrait)' },
-                    { src: '/meeting-pro-maiden-3.png', label: 'Photo 3 (Speaking)' },
-                    { src: '/meeting-pro-maiden-4.png', label: 'Photo 4 (Presenting)' },
-                    { src: '/meeting-pro-maiden-5.png', label: 'Photo 5 (Provocateurs presentation)' },
-                  ].map((img) => (
-                    <a
-                      key={img.src}
-                      href={img.src}
-                      download
-                      className="block w-full px-4 py-3 bg-white/10 hover:bg-sky-400/30 border border-sky-300/40 text-white font-semibold text-sm text-center rounded-lg transition-colors flex items-center justify-center gap-2"
-                    >
-                      <Download className="size-4" />
-                      {img.label}
-                    </a>
-                  ))}
+                <div className="relative">
+                  <a
+                    href="/downloads/meeting-professional-photos.zip"
+                    download
+                    className="block w-full px-6 py-4 bg-white/10 hover:bg-sky-400/30 border border-sky-300/40 text-white font-black text-sm text-center rounded-lg transition-colors flex items-center justify-center gap-3"
+                  >
+                    <Download className="size-5" />
+                    Download all photos
+                  </a>
                 </div>
 
                 {/* Corner accent */}
