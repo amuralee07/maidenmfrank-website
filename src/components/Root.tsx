@@ -40,7 +40,7 @@ export function Root() {
               <div className="font-semibold mb-4">Connect</div>
               <div className="space-y-2">
                 <Link to="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
-                <Link to="/about" className="block text-white/60 hover:text-white transition-colors">About Maiden</Link>
+                <Link to="/about" className="block text-white/60 hover:text-white transition-colors">Meet Maiden</Link>
                 <Link to="/contact" className="block text-white/60 hover:text-white transition-colors">Connect</Link>
                 <a href="https://www.linkedin.com/in/MaidenManzanalFrank" target="_blank" rel="noopener noreferrer" className="block text-white/60 hover:text-white transition-colors">LinkedIn</a>
               </div>

@@ -52,7 +52,8 @@ export function Speaking() {
       description: "Five powerful strategies to move teams from resistance and polarization to alignment and coherence. Reframe change as travelling together and learn where to leverage for catalytic social impact.",
       image: workshopImage,
       color: "from-amber-600 to-amber-500",
-      icon: Zap
+      icon: Zap,
+      imagePosition: "top" as const
     },
     {
       title: "Build Your Legacy as a Changemaker Now",
@@ -183,7 +184,7 @@ export function Speaking() {
           <ImageWithFallback
             src={speakingHero}
             alt="Maiden Manzanal-Frank speaking on stage"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30" />
         </motion.div>
@@ -420,14 +421,39 @@ export function Speaking() {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.03, rotate: 0, y: -10 }}
                   transition={{ duration: 0.5 }}
-                  className="group relative overflow-hidden shadow-2xl hover:shadow-sky-300/40 transition-all cursor-pointer"
+                  className="group relative overflow-hidden shadow-2xl hover:shadow-sky-300/40 transition-all"
                   style={{ 
                     clipPath: index % 2 === 0 
                       ? 'polygon(0% 3%, 97% 0%, 100% 97%, 3% 100%)'
                       : 'polygon(3% 0%, 100% 3%, 97% 100%, 0% 97%)'
                   }}
                 >
-                  {/* Image with overlay */}
+                  {/* Content with gradient background - text on top */}
+                  <div className="relative bg-gradient-to-br from-[#3d2817]/90 via-[#2C1810] to-amber-900/80 p-8 backdrop-blur-sm">
+                    {/* Abstract corner decoration */}
+                    <div 
+                      className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-sky-300/20 to-transparent"
+                      style={{ clipPath: 'polygon(0% 0%, 100% 0%, 0% 100%)' }}
+                    />
+                    
+                    <h3 className="text-3xl font-black text-white mb-4 tracking-tight relative z-10">
+                      {topic.title}
+                    </h3>
+                    <p className="text-white/70 mb-6 leading-relaxed relative z-10">
+                      {topic.description}
+                    </p>
+                    <div className="relative z-10">
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-white group-hover:gap-4 transition-all"
+                      >
+                        <span className={`bg-gradient-to-r ${topic.color} text-transparent bg-clip-text`}>Learn More</span>
+                        <ArrowRight className="size-5 text-sky-300 group-hover:translate-x-2 transition-transform" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Image with overlay - image below text */}
                   <div className="relative h-72 overflow-hidden">
                     <motion.div
                       className="absolute inset-0"
@@ -437,7 +463,7 @@ export function Speaking() {
                       <ImageWithFallback
                         src={topic.image}
                         alt={topic.title}
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${'imagePosition' in topic && topic.imagePosition === 'top' ? 'object-top' : ''}`}
                       />
                     </motion.div>
                     
@@ -453,28 +479,6 @@ export function Speaking() {
                     >
                       <Icon className="size-8 text-white" />
                     </motion.div>
-                  </div>
-
-                  {/* Content with gradient background */}
-                  <div className="relative bg-gradient-to-br from-[#3d2817]/90 via-[#2C1810] to-amber-900/80 p-8 backdrop-blur-sm">
-                    {/* Abstract corner decoration */}
-                    <div 
-                      className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-sky-300/20 to-transparent"
-                      style={{ clipPath: 'polygon(0% 0%, 100% 0%, 0% 100%)' }}
-                    />
-                    
-                    <h3 className="text-3xl font-black text-white mb-4 tracking-tight relative z-10">
-                      {topic.title}
-                    </h3>
-                    <p className="text-white/70 mb-6 leading-relaxed relative z-10">
-                      {topic.description}
-                    </p>
-                    <div className="relative z-10">
-                      <div className="inline-flex items-center gap-2 text-sm font-bold text-white group-hover:gap-4 transition-all">
-                        <span className={`bg-gradient-to-r ${topic.color} text-transparent bg-clip-text`}>Learn More</span>
-                        <ArrowRight className="size-5 text-sky-300 group-hover:translate-x-2 transition-transform" />
-                      </div>
-                    </div>
                   </div>
                 </motion.div>
               );
@@ -505,16 +509,18 @@ export function Speaking() {
                   Need a Custom Topic?
                 </h3>
                 <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-                  Every keynote is tailored to your specific challenges, industry, and organizational goals.
+                  Every keynote is tailored to your specific challenges, industry, and <span className="whitespace-nowrap">organizational goals</span>.
                 </p>
-                <motion.button 
-                  className="px-10 py-5 bg-gradient-to-r from-sky-400 to-sky-300 text-white font-black text-lg shadow-2xl shadow-sky-300/50"
-                  style={{ clipPath: 'polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)' }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Discuss Your Event
-                </motion.button>
+                <Link to="/contact">
+                  <motion.span
+                    className="inline-block px-10 py-5 bg-gradient-to-r from-sky-400 to-sky-300 text-white font-black text-lg shadow-2xl shadow-sky-300/50"
+                    style={{ clipPath: 'polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Discuss Your Event
+                  </motion.span>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -841,12 +847,24 @@ export function Speaking() {
                   High-resolution images for event promotion, websites, and marketing materials.
                 </p>
 
-                <div className="relative">
-                  <button className="w-full px-6 py-4 bg-gradient-to-r from-sky-400 to-sky-300 text-white font-black flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-xl"
-                          style={{ clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)' }}>
-                    <Download className="size-5" />
-                    Download Photos
-                  </button>
+                <div className="relative space-y-2">
+                  {[
+                    { src: '/meeting-pro-maiden-1.png', label: 'Photo 1 (Filipiniana)' },
+                    { src: '/meeting-pro-maiden-2.png', label: 'Photo 2 (Professional portrait)' },
+                    { src: '/meeting-pro-maiden-3.png', label: 'Photo 3 (Speaking)' },
+                    { src: '/meeting-pro-maiden-4.png', label: 'Photo 4 (Presenting)' },
+                    { src: '/meeting-pro-maiden-5.png', label: 'Photo 5 (Provocateurs presentation)' },
+                  ].map((img) => (
+                    <a
+                      key={img.src}
+                      href={img.src}
+                      download
+                      className="block w-full px-4 py-3 bg-white/10 hover:bg-sky-400/30 border border-sky-300/40 text-white font-semibold text-sm text-center rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Download className="size-4" />
+                      {img.label}
+                    </a>
+                  ))}
                 </div>
 
                 {/* Corner accent */}

@@ -239,10 +239,6 @@ export function Books() {
                 </Link>
               </div>
 
-              <div className="text-white/60 text-sm">
-                <p className="mb-2"><strong className="text-white">Author:</strong> Maiden R. Manzanal-Frank</p>
-                <p><strong className="text-white">Publisher:</strong> Changemakers Books</p>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -581,7 +577,7 @@ export function Books() {
         </div>
       </section>
 
-      {/* Media Features - single poster + list */}
+      {/* Media Features - poster-style design, no image; clickable boxes at bottom */}
       <section className="py-32 bg-gradient-to-b from-stone-50 via-amber-50/70 to-sky-50">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <motion.h2
@@ -593,52 +589,172 @@ export function Books() {
             Media Features
           </motion.h2>
 
-          <p className="max-w-3xl mx-auto text-center text-stone-700 mb-12 text-lg">
+          <p className="max-w-3xl mx-auto text-center text-stone-700 mb-14 text-lg">
             Featured guest on top podcasts, seminars, and TV — sharing global insights on{" "}
             <span className="font-semibold text-amber-700">Provocateurs, Not Philanthropists</span>.
           </p>
 
+          {/* Poster-style card (design only, no image) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-5xl mx-auto mb-14"
+            className="max-w-5xl mx-auto rounded-3xl shadow-2xl border border-stone-200 bg-white overflow-hidden"
           >
-            <motion.img
-              src="/books-podcast-guestings.png"
-              alt="Podcast guestings featuring Maiden Manzanal-Frank"
-              className="w-full rounded-3xl shadow-2xl border border-stone-200"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
+            {/* Top: curved teal accent + section title for whole design */}
+            <div className="h-32 bg-gradient-to-br from-teal-400/90 via-teal-300/80 to-cyan-300/70 relative flex items-center justify-center">
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/20 -translate-y-1/2 translate-x-1/2" />
+              <h3 className="relative z-10 text-2xl lg:text-3xl font-black text-black drop-shadow-md">Featured episodes</h3>
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="max-w-2xl mx-auto"
-          >
-            <p className="text-sm font-semibold uppercase tracking-wide text-stone-500 mb-4 text-center">
-              Watch or listen
-            </p>
-            <ul className="space-y-2">
-              {mediaFeatures.map((item, index) => (
-                <li key={item.title + item.url}>
-                  <a
+            {/* Podcast player visual: bar + waveform, vinyl overlapping right edge */}
+            <div className="px-8 lg:px-12 -mt-6 relative py-8">
+              <div className="relative rounded-2xl border border-stone-200 bg-stone-50 p-6 pr-44 lg:pr-52">
+                {/* Progress bar */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: 18,
+                    backgroundColor: '#d6d3d1',
+                    borderRadius: 9999,
+                    position: 'relative',
+                    overflow: 'visible',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      width: '28%',
+                      backgroundColor: '#f59e0b',
+                      borderRadius: 9999,
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      left: '28%',
+                      width: 12,
+                      height: 20,
+                      backgroundColor: '#292524',
+                      borderRadius: 2,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                      zIndex: 10,
+                    }}
+                  />
+                </div>
+                {/* Sound waves — many bars so length matches duration bar, centered waveform, black, with occasional near-silence drops */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 3,
+                    height: 64,
+                    width: '100%',
+                    marginTop: 24,
+                  }}
+                >
+                  {(() => {
+                    // Generate more amplitude values so waveform spans full width (wave-like pattern)
+                    const base = [35, 58, 42, 72, 48, 65, 38, 78, 52, 68, 45, 82, 55, 70, 40, 75, 50, 88, 60, 72, 44, 80, 54];
+                    const count = 110;
+                    const amplitudes = Array.from({ length: count }, (_, i) => {
+                      const t = i / (count - 1);
+                      const idx = Math.floor(t * (base.length - 1));
+                      const a = base[idx];
+                      const next = base[Math.min(idx + 1, base.length - 1)];
+                      const blend = (t * (base.length - 1)) % 1;
+                      let value = Math.round(a + (next - a) * blend);
+
+                      // Create stretches of very low \"background\" dB and stretches of normal speaking dB
+                      // Example pattern: quiet 0–14, normal 15–39, quiet 40–54, normal 55–84, quiet 85–99
+                      const quiet =
+                        i < 15 ||
+                        (i >= 40 && i < 55) ||
+                        i >= 85;
+
+                      if (quiet) {
+                        // Drop to ~5 dB equivalent (very small bars)
+                        value = 5;
+                      }
+
+                      return value;
+                    });
+                    return amplitudes.map((h, i) => {
+                      const amplitude = (h / 100) * 28;
+                      const barHeight = Math.max(2, amplitude * 2);
+                      return (
+                        <div
+                          key={i}
+                          style={{
+                            width: 4,
+                            height: barHeight,
+                            minHeight: 2,
+                            backgroundColor: '#1c1917',
+                            borderRadius: 2,
+                            flexShrink: 0,
+                          }}
+                        />
+                      );
+                    });
+                  })()}
+                </div>
+
+                {/* Vinyl — absolute right edge, center aligned with progress bar (slightly up) */}
+                <div className="absolute right-4 top-0 -translate-y-1/2 z-20">
+                  <motion.div
+                    className="relative rounded-full shadow-2xl"
+                    style={{
+                      width: 160,
+                      height: 160,
+                      background: 'radial-gradient(circle at 30% 30%, #44403c, #1c1917 40%, #0c0a09)',
+                      boxShadow: 'inset 0 0 0 2px #292524, 0 8px 24px rgba(0,0,0,0.3)',
+                    }}
+                    whileInView={{ rotate: 360 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  >
+                    <div style={{ position: 'absolute', inset: '28%', borderRadius: '50%', background: '#fffbeb', border: '2px solid #fde68a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: 16, height: 16, borderRadius: '50%', background: '#292524' }} />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom: clickable featured boxes */}
+            <div className="px-6 lg:px-8 pb-8 pt-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-4 text-center">
+                Watch or listen — click to open
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {mediaFeatures.map((item, index) => (
+                  <motion.a
+                    key={item.title + item.url}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 py-2.5 text-stone-800 font-medium hover:text-teal-600 transition-colors group"
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.04 }}
+                    whileHover={{ y: -2 }}
+                    className="flex items-center gap-2 py-3 px-4 rounded-xl bg-stone-50 border border-stone-200 hover:border-teal-400 hover:bg-teal-50/50 shadow-sm hover:shadow transition-all group text-left"
                   >
-                    <ExternalLink className="size-4 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span className="group-hover:underline">{item.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    <ExternalLink className="size-4 shrink-0 text-stone-400 group-hover:text-teal-600 transition-colors" />
+                    <span className="text-sm font-medium text-stone-700 group-hover:text-teal-800 transition-colors line-clamp-2">
+                      {item.title}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

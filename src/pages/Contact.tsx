@@ -93,11 +93,11 @@ export function Contact() {
                 </p>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-88 lg:h-88 rounded-3xl overflow-hidden shadow-2xl border border-amber-100 bg-amber-50">
+                <div className="relative w-72 sm:w-80 lg:w-96 rounded-3xl overflow-hidden shadow-2xl border border-amber-100 bg-amber-50">
                   <img
                     src={professionalHeadshot}
                     alt="Maiden Manzanal-Frank"
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-cover object-top"
                   />
                   <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                     <div className="text-sm font-semibold text-amber-200">Community Builder</div>

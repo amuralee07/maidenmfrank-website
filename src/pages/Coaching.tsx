@@ -26,10 +26,10 @@ export function Coaching() {
       subtitle: "One-on-One Coaching",
       price: "Free", 
       color: "from-teal-600 to-cyan-600",
-      description: "Free with a deposit to be refunded. Risk-free opportunity to experience Maiden's coaching approach. Perfect for leaders who want to explore working with a trusted thinking partner on strategy, change, and legacy.",
+      description: "Risk-free opportunity to experience Maiden's coaching approach. Perfect for leaders who want to explore working with a trusted thinking partner on strategy, change, and legacy.",
       features: ["Risk-free with refundable deposit", "One-on-one coaching format", "Focus on clarity and courageous action"],
       buttonText: "Get Started",
-      buttonLink: "https://5day-challenge-mmf.replit.app/admin",
+      buttonLink: "https://5day-challenge-mmf.replit.app",
       image: challengeImage,
       icon: Target,
       emoji: "🎯"

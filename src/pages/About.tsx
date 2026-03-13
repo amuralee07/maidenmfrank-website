@@ -89,23 +89,24 @@ export function About() {
         />
       </div>
 
-      {/* Hero */}
+      {/* Hero - text on left so photo/face is visible on the right */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={aboutHeroImage}
             alt="Maiden Manzanal-Frank in traditional Filipino attire"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover object-right"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/55" />
+          {/* Stronger gradient on left so text is readable; lighter on right so face shows */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 from-0% via-black/40 via-45% to-black/20 to-100%" />
         </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 py-28">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-28">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-4xl"
+            className="max-w-xl lg:max-w-2xl"
           >
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-emerald-900/40 backdrop-blur-xl border border-emerald-300/40 mb-8 rounded-full">
               <Sparkles className="size-5 text-sky-300 fill-sky-300" />
@@ -125,11 +126,8 @@ export function About() {
             </h1>
 
             <p className="text-xl lg:text-2xl text-white/80 leading-relaxed max-w-3xl mb-12">
-              My name is <span className="font-bold text-white">Maiden Manzanal-Frank</span>. I grew up in the
-              <span className="font-semibold text-emerald-200"> Philippines</span>—an archipelago of thousands of
-              tropical islands—and I work at the intersection of{' '}
-              <span className="font-semibold">strategy, change, and impact</span> to help leaders build on-purpose
-              organizations and deliver outcomes that truly matter.
+              My name is <span className="font-bold text-white">Maiden Manzanal-Frank</span>. I have more than twenty years of experience in the business of social good. I work at the intersection of{' '}
+              <span className="font-semibold">strategy, change, and impact</span> to help leaders build on-purpose organizations and deliver outcomes that truly matter.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6">
@@ -223,14 +221,14 @@ export function About() {
                 Since 2001, I’ve trained thousands of managers, executives, and leaders across 16 countries.
               </p>
 
-              <div className="bg-white/90 backdrop-blur-sm border border-emerald-200/60 rounded-3xl p-8 shadow-xl">
-                <h3 className="text-2xl font-black text-[#064E3B] mb-4">
+              <div className="bg-white/90 backdrop-blur-sm border border-emerald-200/60 rounded-3xl p-10 lg:p-14 shadow-xl">
+                <h3 className="text-2xl font-black text-[#064E3B] mb-10">
                   Interesting things about me (and why they matter)
                 </h3>
-                <ul className="space-y-5 text-[#065F46]/80">
-                  <li className="flex gap-3">
-                    <span className="mt-2 size-2 rounded-full bg-emerald-500 flex-shrink-0" />
-                    <p className="leading-relaxed">
+                <ul className="space-y-12 text-[#065F46]/80">
+                  <li className="flex gap-4">
+                    <span className="mt-2 size-2.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                    <p className="text-lg leading-relaxed">
                       I grew up in the{' '}
                       <span className="font-semibold text-[#064E3B]">Philippines</span>, surrounded by disadvantaged yet resilient communities
                       and empowered leaders, and have traveled to{' '}
@@ -238,16 +236,16 @@ export function About() {
                       culture, context, and real-world complexity.
                     </p>
                   </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 size-2 rounded-full bg-emerald-500 flex-shrink-0" />
-                    <p className="leading-relaxed">
+                  <li className="flex gap-4">
+                    <span className="mt-2 size-2.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                    <p className="text-lg leading-relaxed">
                       I’ve worked in <span className="font-semibold text-[#09090b]">15 countries</span>, in settings that range from
                       the most depressed areas in the world to boardrooms—so I translate big ideas into grounded, practical actions.
                     </p>
                   </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 size-2 rounded-full bg-emerald-500 flex-shrink-0" />
-                    <p className="leading-relaxed">
+                  <li className="flex gap-4">
+                    <span className="mt-2 size-2.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                    <p className="text-lg leading-relaxed">
                       I’m a <span className="font-semibold text-[#09090b]">Rotary Peace Fellow</span> and a diversity awardee, which
                       shapes how I speak about leadership in polarized and fast-changing environments.
                     </p>
@@ -297,7 +295,7 @@ export function About() {
                   </div>
                 </div>
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-emerald-50 bg-emerald-900/5">
-                  <img src={workshopImage} alt="Maiden facilitating a workshop" className="w-full h-full object-cover" />
+                  <img src={workshopImage} alt="Maiden facilitating a workshop" className="w-full h-full object-cover object-top" />
                   <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
                     <div className="text-white font-black text-2xl">Facilitator</div>
                     <div className="text-white/70 text-lg font-semibold">Interactive, reflective sessions</div>

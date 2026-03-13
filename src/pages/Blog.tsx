@@ -73,24 +73,39 @@ export function Blog() {
         </div>
 
         <div className="relative max-w-[1200px] mx-auto px-6 lg:px-12">
-          {/* Hero / intro */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <p className="text-sm font-semibold tracking-[0.25em] uppercase text-emerald-700 mb-4">
-              Frank Insights Blog
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.9] mb-6 text-slate-900">
-              Meditations on the business of doing good.
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-700 mb-8">
-              Short, practical reflections for provocateurs who want to turn good intentions into measurable impact —
-              without losing their humanity, joy, or sense of humor along the way.
-            </p>
-          </motion.div>
+          {/* Hero / intro with logo */}
+          <div className="flex flex-col lg:flex-row items-start gap-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="w-full max-w-sm"
+            >
+              <img
+                src="/frank-insights-logo.png"
+                alt="Frank Insights logo"
+                className="w-full max-w-xs lg:max-w-sm"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="flex-1 max-w-2xl"
+            >
+              <p className="text-sm font-semibold tracking-[0.25em] uppercase text-emerald-700 mb-4">
+                Frank Insights Blog
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.9] mb-6 text-slate-900">
+                Meditations on the business of doing good.
+              </h1>
+              <p className="text-lg sm:text-xl text-slate-700 mb-8">
+                Short, practical reflections for provocateurs who want to turn good intentions into measurable impact —
+                without losing their humanity, joy, or sense of humor along the way.
+              </p>
+            </motion.div>
+          </div>
 
           {/* Subscribe strip (James Clear–style top signup) */}
           <motion.div
